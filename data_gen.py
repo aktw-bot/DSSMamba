@@ -31,7 +31,6 @@ def load_data(data_sign, data_path_prefix):
     return data, labels
 
 
-# 按照数量固定划分训练集和测试集
 def gen(data_sign, train_num_per_class, val_num_per_class, data_path_prefix, max_percent=0.5):
     data, labels = load_data(data_sign, data_path_prefix)
     h, w, c = data.shape
@@ -52,7 +51,7 @@ def gen(data_sign, train_num_per_class, val_num_per_class, data_path_prefix, max
     for cl in range(1, class_num+1):
         ll = class2data[cl]
         total = len(ll)
-        # 如果样本数量不足，按比例划分
+        
         real_train_num = train_num_per_class
         real_val_num = val_num_per_class
         if total <= train_num_per_class + val_num_per_class:
@@ -101,7 +100,6 @@ def gen(data_sign, train_num_per_class, val_num_per_class, data_path_prefix, max
     return target
 
 
-#执行函数
 def run():
     signs = ['Houston']    # ['IP', 'UP', 'HongHu', 'Houston', 'SA']
     data_path_prefix = './data'
